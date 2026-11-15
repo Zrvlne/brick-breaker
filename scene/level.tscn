@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://odkkst7p2dkb"]
+
+[ext_resource type="Script" uid="uid://t58063w8xqwt" path="res://scripts/level.gd" id="1_7g0b6"]
+[ext_resource type="PackedScene" uid="uid://b4wbvyyfy62gs" path="res://scene/paddle.tscn" id="1_s4405"]
+[ext_resource type="PackedScene" uid="uid://jlfdp4j0s630" path="res://scene/main.tscn" id="2_36wlx"]
+[ext_resource type="Texture2D" uid="uid://d250q632thwnv" path="res://assets/Moonlit Ghost Castle Landscape.png" id="4_7g0b6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ax1me"]
+size = Vector2(645.69635, 17.990252)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6om57"]
+size = Vector2(18.5, 658)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4xsop"]
+size = Vector2(1190.5, 31)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mitoj"]
+size = Vector2(1824.5, 43)
+
+[node name="Level" type="Node2D" unique_id=4121767]
+script = ExtResource("1_7g0b6")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=430628000]
+position = Vector2(578, 324)
+
+[node name="main" parent="." unique_id=1486154010 instance=ExtResource("2_36wlx")]
+position = Vector2(583, 453)
+
+[node name="paddle" parent="." unique_id=1236671898 instance=ExtResource("1_s4405")]
+position = Vector2(32, 23)
+
+[node name="walls" type="StaticBody2D" parent="." unique_id=310573406]
+
+[node name="Left wall" type="CollisionShape2D" parent="walls" unique_id=1462109880]
+position = Vector2(-9.989452, 322.1085)
+rotation = -1.5757234
+scale = Vector2(0.9999997, 0.9999997)
+shape = SubResource("RectangleShape2D_ax1me")
+
+[node name="right wall" type="CollisionShape2D" parent="walls" unique_id=427964593]
+position = Vector2(1163.75, 323)
+shape = SubResource("RectangleShape2D_6om57")
+
+[node name="celling" type="CollisionShape2D" parent="walls" unique_id=1363168927]
+position = Vector2(576.25, -20.5)
+shape = SubResource("RectangleShape2D_4xsop")
+
+[node name="MoonlitGhostCastleLandscape" type="Sprite2D" parent="." unique_id=1793927375]
+modulate = Color(1, 1, 1, 0.3529412)
+position = Vector2(579.00006, 312.99997)
+scale = Vector2(0.7438895, 0.74388945)
+texture = ExtResource("4_7g0b6")
+
+[node name="DeathZone" type="Area2D" parent="." unique_id=669996844]
+position = Vector2(576, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone" unique_id=1851244968]
+position = Vector2(20, 673)
+shape = SubResource("RectangleShape2D_mitoj")
+
+[connection signal="body_entered" from="DeathZone" to="main" method="_on_death_zone_body_entered"]

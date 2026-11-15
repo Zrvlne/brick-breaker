@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://bt0i6mqd10jh4"]
+
+[ext_resource type="Script" uid="uid://c32706rlkyi5q" path="res://scripts/brick.gd" id="1_18ifo"]
+[ext_resource type="Texture2D" uid="uid://bou650yp5d7og" path="res://assets/Neon Ghost Flame Tile.png" id="2_oigqh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ax1me"]
+size = Vector2(79, 68)
+
+[sub_resource type="Gradient" id="Gradient_18ifo"]
+colors = PackedColorArray(0.110431306, 0.5104947, 0.7099979, 1, 1, 1, 1, 1)
+
+[node name="Ghost Brick" type="RigidBody2D" unique_id=496666816 groups=["Brick"]]
+gravity_scale = 0.0
+lock_rotation = true
+freeze = true
+script = ExtResource("1_18ifo")
+
+[node name="NeonGhostFlameTile" type="Sprite2D" parent="." unique_id=398769552]
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("2_oigqh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=117772176]
+position = Vector2(0.5, -1)
+shape = SubResource("RectangleShape2D_ax1me")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=37639851]
+emitting = false
+amount = 50
+lifetime = 0.5
+one_shot = true
+randomness = 1.0
+draw_order = 1
+emission_shape = 1
+emission_sphere_radius = 24.0
+gravity = Vector2(0, -500)
+linear_accel_min = 0.1
+linear_accel_max = 0.1
+scale_amount_min = 0.0
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_18ifo")

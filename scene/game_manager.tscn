@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://diqqeqodjdb42"]
+
+[ext_resource type="Script" uid="uid://dinytwxagqwg1" path="res://scripts/game_manager.gd" id="1_y6yp7"]
+[ext_resource type="AudioStream" uid="uid://djwvqvtbnnt18" path="res://assets/audio/BHOOL BHULAIYAA 2 _ HORROR BACKGROUND MUSIC - (320 Kbps).mp3" id="2_8cna3"]
+[ext_resource type="AudioStream" uid="uid://d4fkwnrd3r6g4" path="res://assets/audio/mixkit-8-bit-bomb-explosion-2811.wav" id="3_hy1te"]
+[ext_resource type="AudioStream" uid="uid://1qtq0khgfrkh" path="res://assets/audio/mixkit-gaming-lock-2848.wav" id="4_yyxvu"]
+
+[node name="GameManager" type="Node" unique_id=601990845]
+script = ExtResource("1_y6yp7")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1378936388]
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer" unique_id=1218689673]
+offset_left = 472.0
+offset_top = 604.0
+offset_right = 641.0
+offset_bottom = 646.0
+theme_override_font_sizes/font_size = 30
+text = "0"
+horizontal_alignment = 1
+
+[node name="LevelLabel" type="Label" parent="CanvasLayer" unique_id=663425361]
+offset_left = 1006.0
+offset_top = 601.0
+offset_right = 1140.0
+offset_bottom = 643.0
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 2
+
+[node name="BGM" type="AudioStreamPlayer" parent="." unique_id=1257064689]
+stream = ExtResource("2_8cna3")
+volume_db = -20.0
+
+[node name="Bomb" type="AudioStreamPlayer" parent="." unique_id=722515392]
+stream = ExtResource("3_hy1te")
+
+[node name="Hit" type="AudioStreamPlayer" parent="." unique_id=238941791]
+stream = ExtResource("4_yyxvu")
+volume_db = -5.0
